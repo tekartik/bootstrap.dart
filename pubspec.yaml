@@ -1,5 +1,5 @@
 name: 'tekartik_bootstrap'
-version: 0.0.1
+version: 0.0.2
 description: Boostrap wrappers
 author: Alexandre Roux <alex@tekartik.com>
 environment:
@@ -8,7 +8,7 @@ dependencies:
   browser: any
   pub_semver: any
   tekartik_jquery:
-    path: /media/ssd/devx/git/tekartik_jquery.dart
+    git: git://github.com/alextekartik/tekartik_jquery.dart
 dev_dependencies:
   test: any
   tekartik_bootstrap_asset:
