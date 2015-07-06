@@ -19,7 +19,7 @@ void main() {
 
   group('alert', () {
     test('version', () {
-      expect(jQuery['alert']['Constructor']['VERSION'], bootstrapVersionDefault.toString());
+      expect(jQuery.fn('alert')['Constructor']['VERSION'], bootstrapVersionDefault.toString());
     });
   });
 

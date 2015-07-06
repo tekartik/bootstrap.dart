@@ -12,9 +12,9 @@ void main() {
   group('loader', () {
     test('load', () async {
       JQuery jq = await loadJQuery();
-      expect(jq['alert'], isNull);
+      expect(jq.fn('alert'), isNull);
       await loadBootstrapJs();
-      expect(jq['alert'], isNotNull);
+      expect(jq.fn('alert'), isNotNull);
     });
 
   });

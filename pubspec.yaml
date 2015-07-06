@@ -1,5 +1,5 @@
 name: 'tekartik_bootstrap'
-version: 0.0.2
+version: 0.0.3
 description: Boostrap wrappers
 author: Alexandre Roux <alex@tekartik.com>
 environment:
