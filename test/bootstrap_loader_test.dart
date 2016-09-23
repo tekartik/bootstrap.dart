@@ -8,7 +8,6 @@ import 'package:tekartik_bootstrap/bootstrap_loader.dart';
 import 'package:test/test.dart';
 
 void main() {
-
   group('loader', () {
     test('load', () async {
       JQuery jq = await loadJQuery();
@@ -16,8 +15,5 @@ void main() {
       await loadBootstrapJs();
       expect(jq.fn('alert'), isNotNull);
     });
-
   });
-
-
 }

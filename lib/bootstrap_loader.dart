@@ -17,7 +17,8 @@ Future loadBootstrapJs({Version version}) async {
   jQuery;
   //print(jsObjectToDebugString(jQuery.jsObject));
   // load jquery
-  await loadJavascriptScript("packages/tekartik_bootstrap_asset/$version/js/bootstrap.min.js");
+  await loadJavascriptScript(
+      "packages/tekartik_bootstrap_asset/$version/js/bootstrap.min.js");
   //print(jsObjectToDebugString(jQuery.jsObject));
 }
 
@@ -25,12 +26,14 @@ Future loadBootstrapCss({Version version}) async {
   if (version == null) {
     version = bootstrapVersionDefault;
   }
-  await loadStylesheet("packages/tekartik_bootstrap_asset/$version/css/bootstrap.min.css");
+  await loadStylesheet(
+      "packages/tekartik_bootstrap_asset/$version/css/bootstrap.min.css");
 }
 
 Future loadBootstrapThemeCss({Version version}) async {
   if (version == null) {
     version = bootstrapVersionDefault;
   }
-  await loadStylesheet("packages/tekartik_bootstrap_asset/$version/css/bootstrap-theme.min.css");
+  await loadStylesheet(
+      "packages/tekartik_bootstrap_asset/$version/css/bootstrap-theme.min.css");
 }
