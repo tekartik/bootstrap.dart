@@ -1,8 +1,6 @@
 @TestOn("browser")
-library jquery_browser_test;
-
 import 'package:tekartik_bootstrap/bootstrap_loader.dart';
-import 'package:test/test.dart';
+import 'package:dev_test/test.dart';
 
 void main() {
   group('loader no jquery', () {
