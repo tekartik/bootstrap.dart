@@ -3,15 +3,22 @@ version: 0.0.3
 description: Boostrap wrappers
 author: Alexandre Roux <alex@tekartik.com>
 environment:
-  sdk: '>=1.0.0 <2.0.0'
+  sdk: '>=1.20.1 <2.0.0'
 dependencies:
   browser: any
   pub_semver: any
   tekartik_jquery:
     git: git://github.com/alextekartik/tekartik_jquery.dart
+  dart_to_js_script_rewriter: any
 dev_dependencies:
   test: any
   tekartik_bootstrap_asset:
     git: git://github.com/alextekartik/tekartik_bootstrap_asset.dart
   tekartik_jquery_asset:
     git: git://github.com/alextekartik/tekartik_jquery_asset.dart
+transformers:
+  - dart_to_js_script_rewriter
+
+dependency_overrides:
+#  tekartik_common_utils:
+#    path: /opt/devx/git/github.com/tekartik/tekartik_common_utils.dart

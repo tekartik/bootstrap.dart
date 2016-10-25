@@ -4,8 +4,33 @@ import 'package:tekartik_browser_utils/js_utils.dart';
 import 'package:tekartik_browser_utils/css_utils.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:tekartik_jquery/jquery.dart';
+import 'package:tekartik_jquery/jquery_loader.dart';
 import 'dart:async';
 import 'bootstrap.dart';
+import 'package:tekartik_common_utils/env_utils.dart';
+
+// Load jquery and bootstrap
+Future loadBootstrap() async {
+  if (isRelease) {
+    await Future.wait([() async {
+      await loadCdnBootstrapCss();
+      await loadCdnBootstrapThemeCss();
+    }(), () async {
+      await loadCdnJQuery();
+      await loadCdnBootstrapJs();
+    }()
+    ]);
+  } else {
+    await Future.wait([() async {
+      await loadBootstrapCss();
+      await loadBootstrapThemeCss();
+    }(), () async {
+      await loadJQuery();
+      await loadBootstrapJs();
+    }()
+    ]);
+  }
+}
 
 Future loadBootstrapJs({Version version}) async {
   if (version == null) {
@@ -22,6 +47,16 @@ Future loadBootstrapJs({Version version}) async {
   //print(jsObjectToDebugString(jQuery.jsObject));
 }
 
+Future loadCdnBootstrapJs({Version version}) async {
+  if (version == null) {
+    version = bootstrapVersionDefault;
+  }
+
+  jQuery;
+  await loadJavascriptScript(
+      "//maxcdn.bootstrapcdn.com/bootstrap/$version/js/bootstrap.min.js");
+}
+
 Future loadBootstrapCss({Version version}) async {
   if (version == null) {
     version = bootstrapVersionDefault;
@@ -30,10 +65,26 @@ Future loadBootstrapCss({Version version}) async {
       "packages/tekartik_bootstrap_asset/$version/css/bootstrap.min.css");
 }
 
+Future loadCdnBootstrapCss({Version version}) async {
+  if (version == null) {
+    version = bootstrapVersionDefault;
+  }
+  await loadStylesheet(
+      "//maxcdn.bootstrapcdn.com/bootstrap/$version/css/bootstrap.min.css");
+}
+
 Future loadBootstrapThemeCss({Version version}) async {
   if (version == null) {
     version = bootstrapVersionDefault;
   }
   await loadStylesheet(
       "packages/tekartik_bootstrap_asset/$version/css/bootstrap-theme.min.css");
+}
+
+Future loadCdnBootstrapThemeCss({Version version}) async {
+  if (version == null) {
+    version = bootstrapVersionDefault;
+  }
+  await loadStylesheet(
+      "//maxcdn.bootstrapcdn.com/bootstrap/$version/css/bootstrap-theme.min.css");
 }

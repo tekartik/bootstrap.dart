@@ -1,14 +1,9 @@
 import 'dart:html';
 import 'package:tekartik_jquery/jquery.dart';
-import 'package:tekartik_jquery/jquery_loader.dart';
 import 'package:tekartik_bootstrap/bootstrap_loader.dart';
 
 main() async {
-  print('Hi');
-  await loadBootstrapCss();
-  await loadBootstrapThemeCss();
-  await loadJQuery();
-  await loadBootstrapJs();
+  await loadBootstrap();
   jElement(document.body).fadeIn();
   //print('done');
 }
