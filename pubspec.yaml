@@ -8,9 +8,9 @@ dependencies:
   browser: any
   pub_semver: any
   tekartik_jquery:
-    git: git://github.com/tekartik/tekartik_jquery.dart
+    git: git://github.com/tekartik/jquery.dart
   tekartik_bootstrap_asset:
-    git: git://github.com/tekartik/tekartik_bootstrap_asset.dart
+    git: git://github.com/tekartik/bootstrap_asset.dart
   dart_to_js_script_rewriter: any
 dev_dependencies:
   test: any
