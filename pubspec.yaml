@@ -8,18 +8,18 @@ dependencies:
   browser: any
   pub_semver: any
   tekartik_jquery:
-    git: git://github.com/tekartik/jquery.dart
+    git:
+      url: git://github.com/tekartik/jquery.dart
+      ref: dart2
   tekartik_bootstrap_asset:
-    git: git://github.com/tekartik/bootstrap_asset.dart
+    git:
+      url: git://github.com/tekartik/bootstrap_asset.dart
+      ref: dart2
   dart_to_js_script_rewriter: any
 dev_dependencies:
   test: any
   dev_test: any
   chrome_travis:
-     git: git://github.com/tekartik/chrome_travis.dart
-transformers:
-  - dart_to_js_script_rewriter
-
-dependency_overrides:
-#  tekartik_common_utils:
-#    path: /opt/devx/git/github.com/tekartik/tekartik_common_utils.dart
+     git:
+      url: git://github.com/tekartik/chrome_travis.dart
+      ref: dart2
