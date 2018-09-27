@@ -1,25 +1,24 @@
 name: 'tekartik_bootstrap'
-version: 0.1.0
+version: 0.3.0
 description: Boostrap wrappers
 author: Alexandre Roux <alex@tekartik.com>
 environment:
-  sdk: '>=1.20.1 <2.0.0'
+  sdk: '>=2.0.0 <3.0.0'
 dependencies:
-  browser: any
   pub_semver: any
   tekartik_jquery:
-    git: git://github.com/tekartik/jquery.dart
+    git:
+      url: git://github.com/tekartik/jquery.dart
+      ref: dart2
+    version: '>=0.3.0'
   tekartik_bootstrap_asset:
-    git: git://github.com/tekartik/bootstrap_asset.dart
-  dart_to_js_script_rewriter: any
+    git:
+      url: git://github.com/tekartik/bootstrap_asset.dart
+      ref: dart2
 dev_dependencies:
   test: any
   dev_test: any
   chrome_travis:
-     git: git://github.com/tekartik/chrome_travis.dart
-transformers:
-  - dart_to_js_script_rewriter
-
-dependency_overrides:
-#  tekartik_common_utils:
-#    path: /opt/devx/git/github.com/tekartik/tekartik_common_utils.dart
+     git:
+      url: git://github.com/tekartik/chrome_travis.dart
+      ref: dart2
