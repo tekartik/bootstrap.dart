@@ -12,22 +12,26 @@ import 'package:tekartik_common_utils/env_utils.dart';
 // Load jquery and bootstrap
 Future loadBootstrap() async {
   if (isRelease) {
-    await Future.wait([() async {
-      await loadCdnBootstrapCss();
-      await loadCdnBootstrapThemeCss();
-    }(), () async {
-      await loadCdnJQuery();
-      await loadCdnBootstrapJs();
-    }()
+    await Future.wait([
+      () async {
+        await loadCdnBootstrapCss();
+        await loadCdnBootstrapThemeCss();
+      }(),
+      () async {
+        await loadCdnJQuery();
+        await loadCdnBootstrapJs();
+      }()
     ]);
   } else {
-    await Future.wait([() async {
-      await loadBootstrapCss();
-      await loadBootstrapThemeCss();
-    }(), () async {
-      await loadJQuery();
-      await loadBootstrapJs();
-    }()
+    await Future.wait([
+      () async {
+        await loadBootstrapCss();
+        await loadBootstrapThemeCss();
+      }(),
+      () async {
+        await loadJQuery();
+        await loadBootstrapJs();
+      }()
     ]);
   }
 }
