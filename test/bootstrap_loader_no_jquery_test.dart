@@ -1,4 +1,4 @@
-@TestOn("browser")
+@TestOn('browser')
 import 'package:tekartik_bootstrap/bootstrap_loader.dart';
 import 'package:dev_test/test.dart';
 
@@ -7,8 +7,10 @@ void main() {
     test('load', () async {
       try {
         await loadBootstrapJs();
-        throw "should throw";
-      } catch (e) {}
+        fail('should throw');
+      } catch (e) {
+        expect(e, isNot(const TypeMatcher<TestFailure>()));
+      }
     });
   });
 }

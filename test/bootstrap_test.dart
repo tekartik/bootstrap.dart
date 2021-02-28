@@ -1,4 +1,4 @@
-@TestOn("browser")
+@TestOn('browser')
 library jquery_browser_test;
 
 import 'package:tekartik_bootstrap/bootstrap.dart';
@@ -15,7 +15,7 @@ void main() {
 
   group('alert', () {
     test('version', () {
-      expect(jQuery.fn('alert')['Constructor']['VERSION'],
+      expect(jQuery!.fn('alert')['Constructor']['VERSION'],
           bootstrapVersionDefault.toString());
     });
   });
