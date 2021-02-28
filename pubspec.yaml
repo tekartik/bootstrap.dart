@@ -3,7 +3,7 @@ version: 0.3.0
 description: Boostrap wrappers
 author: Alexandre Roux <alex@tekartik.com>
 environment:
-  sdk: '>=2.0.0 <3.0.0'
+  sdk: '>=2.10.0 <3.0.0'
 dependencies:
   pub_semver: any
   tekartik_jquery:
