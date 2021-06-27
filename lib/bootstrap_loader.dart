@@ -13,7 +13,7 @@ import 'bootstrap.dart';
 
 // Load jquery and bootstrap
 Future loadBootstrap() async {
-  if (isRelease!) {
+  if (isRelease) {
     await Future.wait([
       () async {
         await loadCdnBootstrapCss();
