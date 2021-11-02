@@ -8,8 +8,8 @@ twitter bootstrap wrappers for dart
 dependencies:
   tekartik_bootstrap:
     git:
-      url: git://github.com/tekartik/bootstrap.dart
-      ref: null_safety
+      url: https://github.com/tekartik/bootstrap.dart
+      ref: dart2_3
     version: '>=0.3.0'
 
 ```
