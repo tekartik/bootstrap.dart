@@ -1,14 +1,16 @@
-@TestOn("browser")
-import 'package:tekartik_bootstrap/bootstrap_loader.dart';
+@TestOn('browser')
 import 'package:dev_test/test.dart';
+import 'package:tekartik_bootstrap/bootstrap_loader.dart';
 
 void main() {
   group('loader no jquery', () {
     test('load', () async {
       try {
         await loadBootstrapJs();
-        throw "should throw";
-      } catch (e) {}
+        fail('should throw');
+      } catch (e) {
+        expect(e, isNot(const TypeMatcher<TestFailure>()));
+      }
     });
   });
 }
