@@ -4,7 +4,7 @@ description: Boostrap wrappers
 publish_to: none
 
 environment:
-  sdk: '>=2.12.0-259.16.beta <3.0.0'
+  sdk: '>=2.18.0 <4.0.0'
 dependencies:
   pub_semver: any
   tekartik_jquery:
