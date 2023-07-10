@@ -4,25 +4,27 @@ description: Boostrap wrappers
 publish_to: none
 
 environment:
-  sdk: '>=2.18.0 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 dependencies:
   pub_semver: any
   tekartik_jquery:
     git:
       url: https://github.com/tekartik/jquery.dart
-      ref: dart2_3
+      ref: dart3a
     version: '>=0.3.0'
   tekartik_bootstrap_asset:
     git:
       url: https://github.com/tekartik/bootstrap_asset.dart
-      ref: dart2_3
+      ref: dart3a
 dev_dependencies:
   test: any
   dev_test: any
-  chrome_travis:
-     git:
-      url: https://github.com/tekartik/chrome_travis.dart
-      ref: dart2_3
   build_runner: '>=0.10.1'
   build_test: '>=0.10.3'
   build_web_compilers: '>=0.4.2'
+  tekartik_lints:
+    git:
+      url: https://github.com/tekartik/common.dart
+      ref: dart3a
+      path: packages/lints
+    version: '>=0.1.0'
