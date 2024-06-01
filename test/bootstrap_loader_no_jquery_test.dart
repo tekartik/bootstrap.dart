@@ -1,4 +1,6 @@
 @TestOn('browser')
+library;
+
 import 'package:dev_test/test.dart';
 import 'package:tekartik_bootstrap/bootstrap_loader.dart';
 
