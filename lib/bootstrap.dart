@@ -1,4 +1,4 @@
-library tekartik_bootstrap;
+library;
 
 import 'dart:js';
 

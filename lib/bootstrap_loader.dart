@@ -1,4 +1,4 @@
-library tekartik_bootstrap.loader;
+library;
 
 import 'dart:async';
 
