@@ -22,7 +22,7 @@ Future loadBootstrap() async {
       () async {
         await loadCdnJQuery();
         await loadCdnBootstrapJs();
-      }()
+      }(),
     ]);
   } else {
     await Future.wait([
@@ -33,7 +33,7 @@ Future loadBootstrap() async {
       () async {
         await loadJQuery();
         await loadBootstrapJs();
-      }()
+      }(),
     ]);
   }
 }
@@ -47,7 +47,8 @@ Future loadBootstrapJs({Version? version}) async {
   //print(jsObjectToDebugString(jQuery.jsObject));
   // load jquery
   await loadJavascriptScript(
-      'packages/tekartik_bootstrap_asset/$version/js/bootstrap.min.js');
+    'packages/tekartik_bootstrap_asset/$version/js/bootstrap.min.js',
+  );
   //print(jsObjectToDebugString(jQuery.jsObject));
 }
 
@@ -56,29 +57,34 @@ Future loadCdnBootstrapJs({Version? version}) async {
 
   jQuery;
   await loadJavascriptScript(
-      '//maxcdn.bootstrapcdn.com/bootstrap/$version/js/bootstrap.min.js');
+    '//maxcdn.bootstrapcdn.com/bootstrap/$version/js/bootstrap.min.js',
+  );
 }
 
 Future loadBootstrapCss({Version? version}) async {
   version ??= bootstrapVersionDefault;
   await loadStylesheet(
-      'packages/tekartik_bootstrap_asset/$version/css/bootstrap.min.css');
+    'packages/tekartik_bootstrap_asset/$version/css/bootstrap.min.css',
+  );
 }
 
 Future loadCdnBootstrapCss({Version? version}) async {
   version ??= bootstrapVersionDefault;
   await loadStylesheet(
-      '//maxcdn.bootstrapcdn.com/bootstrap/$version/css/bootstrap.min.css');
+    '//maxcdn.bootstrapcdn.com/bootstrap/$version/css/bootstrap.min.css',
+  );
 }
 
 Future loadBootstrapThemeCss({Version? version}) async {
   version ??= bootstrapVersionDefault;
   await loadStylesheet(
-      'packages/tekartik_bootstrap_asset/$version/css/bootstrap-theme.min.css');
+    'packages/tekartik_bootstrap_asset/$version/css/bootstrap-theme.min.css',
+  );
 }
 
 Future loadCdnBootstrapThemeCss({Version? version}) async {
   version ??= bootstrapVersionDefault;
   await loadStylesheet(
-      '//maxcdn.bootstrapcdn.com/bootstrap/$version/css/bootstrap-theme.min.css');
+    '//maxcdn.bootstrapcdn.com/bootstrap/$version/css/bootstrap-theme.min.css',
+  );
 }

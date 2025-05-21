@@ -18,9 +18,10 @@ void main() {
   group('alert', () {
     test('version', () {
       expect(
-          ((jQuery!.fn('alert') as JsObject)['Constructor']
-              as JsObject)['VERSION'],
-          bootstrapVersionDefault.toString());
+        ((jQuery!.fn('alert') as JsObject)['Constructor']
+            as JsObject)['VERSION'],
+        bootstrapVersionDefault.toString(),
+      );
     });
   });
 }

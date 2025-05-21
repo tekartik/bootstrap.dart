@@ -4,9 +4,9 @@ description: Boostrap wrappers
 publish_to: none
 
 environment:
-  sdk: ^3.5.0
+  sdk: ^3.7.0
 dependencies:
-  pub_semver: any
+  pub_semver: ">=2.1.4"
   tekartik_jquery:
     git:
       url: https://github.com/tekartik/jquery.dart
@@ -25,11 +25,11 @@ dependencies:
       url: https://github.com/tekartik/common_utils.dart
       ref: dart3a
 dev_dependencies:
-  test: any
-  dev_build: any
-  build_runner: '>=0.10.1'
+  test: ">=1.24.0"
+  dev_build: ">=1.1.2"
+  build_runner: ">=2.4.13"
   build_test: '>=0.10.3'
-  build_web_compilers: '>=0.4.2'
+  build_web_compilers: ">=4.0.11"
   tekartik_lints:
     git:
       url: https://github.com/tekartik/common.dart
