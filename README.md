@@ -9,7 +9,6 @@ dependencies:
   tekartik_bootstrap:
     git:
       url: https://github.com/tekartik/bootstrap.dart
-      ref: dart3a
     version: '>=0.3.0'
 
 ```

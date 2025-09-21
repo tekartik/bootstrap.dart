@@ -10,20 +10,16 @@ dependencies:
   tekartik_jquery:
     git:
       url: https://github.com/tekartik/jquery.dart
-      ref: dart3a
     version: '>=0.3.0'
   tekartik_bootstrap_asset:
     git:
       url: https://github.com/tekartik/bootstrap_asset.dart
-      ref: dart3a
   tekartik_browser_utils:
     git:
       url: https://github.com/tekartik/browser_utils.dart
-      ref: dart3a
   tekartik_common_utils:
     git:
       url: https://github.com/tekartik/common_utils.dart
-      ref: dart3a
 dev_dependencies:
   test: ">=1.24.0"
   dev_build: ">=1.1.2"
@@ -33,6 +29,5 @@ dev_dependencies:
   tekartik_lints:
     git:
       url: https://github.com/tekartik/common.dart
-      ref: dart3a
       path: packages/lints
     version: '>=0.1.0'
