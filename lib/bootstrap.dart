@@ -1,19 +1,37 @@
-// ignore_for_file: deprecated_member_use
-
 library;
 
-import 'dart:js';
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:pub_semver/pub_semver.dart';
 
 Version get bootstrapVersionMin => Version(3, 3, 5);
-//Version get bootstrapVersionDefault => new Version(3, 3, 5);
 
 Version get bootstrapVersionDefault => Version(3, 3, 7);
 
-// ignore: non_constant_identifier_names
-JsObject? get _Alert => context['Alert'] as JsObject?;
+/// The [name] property of [object] when it is a javascript object.
+JSObject? _property(JSObject? object, String name) {
+  if (object == null) {
+    return null;
+  }
+  final value = object[name];
+  if (value.isUndefinedOrNull) {
+    return null;
+  }
+  return value as JSObject;
+}
 
+/// The Bootstrap 3 alert plugin constructor (`jQuery.fn.alert.Constructor`),
+/// null until jQuery and Bootstrap's javascript are loaded.
+JSObject? get _alertConstructor => _property(
+  _property(_property(_property(globalContext, 'jQuery'), 'fn'), 'alert'),
+  'Constructor',
+);
+
+/// The Bootstrap alert plugin.
 class Alert {
-  static String? get version => _Alert!['VERSION'] as String?;
+  /// Version of the loaded Bootstrap javascript (`$.fn.alert.Constructor.VERSION`),
+  /// null when Bootstrap's javascript is not loaded.
+  static String? get version =>
+      (_alertConstructor?['VERSION'] as JSString?)?.toDart;
 }

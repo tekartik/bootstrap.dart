@@ -32,10 +32,10 @@ widget or component library: the Bootstrap markup stays plain HTML.
   `tekartik_browser_utils`, `tekartik_common_utils` and `pub_semver`. Declare
   `tekartik_jquery` explicitly too: every js loader needs `jQuery` and you will
   import `package:tekartik_jquery/jquery.dart` to use it.
-* Browser only. Everything runs against the DOM and the legacy `dart:js` /
-  `dart:html` interop, so these libraries are only usable in code compiled for
-  the web (`dart test -p chrome`, `webdev`, `build_web_compilers`), never on the
-  Dart VM or in Flutter.
+* Browser only. Everything runs against the DOM through `dart:js_interop` and
+  `package:web` (dart2js and dart2wasm), so these libraries are only usable in
+  code compiled for the web (`dart test -p chrome`, `-c dart2wasm`, `webdev`,
+  `build_web_compilers`), never on the Dart VM or in Flutter.
 * Three libraries, nothing else is public:
   * `package:tekartik_bootstrap/bootstrap_loader.dart` — all the `load*`
     futures. This is the one you normally import.
@@ -66,11 +66,10 @@ widget or component library: the Bootstrap markup stays plain HTML.
   `tekartik_bootstrap_asset` package ships `3.2.0`, `3.3.5` and `3.3.7`; a
   version passed as `version:` is interpolated straight into the url, so a typo
   is a 404 (the loaders complete with an error, they do not fall back).
-* `Alert.version` (in `bootstrap.dart`) reads a `VERSION` field off a global
-  `Alert` js object and throws on a null global. Bootstrap 3 does not define
-  that global, so prefer reading the loaded version through jQuery:
-  `(jQuery!.fn('alert') as JsObject)['Constructor']['VERSION']`, which is what
-  the package's own test does.
+* `Alert.version` (in `bootstrap.dart`) is the version of the loaded Bootstrap
+  javascript (`$.fn.alert.Constructor.VERSION`), null until jQuery and
+  Bootstrap's javascript are loaded (before 0.4.0 it read a global `Alert` that
+  Bootstrap 3 does not define, and always threw).
 * `btn` and `btnDefault` are plain `final String` values (not `const`), so they
   can be used in expressions but not in `const` contexts. They are the only two
   class names the package exposes; write the other Bootstrap classes

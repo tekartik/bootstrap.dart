@@ -1,9 +1,8 @@
-// ignore_for_file: deprecated_member_use
-
 @TestOn('browser')
 library;
 
-import 'dart:js';
+import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 
 import 'package:tekartik_bootstrap/bootstrap.dart';
 import 'package:tekartik_bootstrap/bootstrap_loader.dart';
@@ -20,8 +19,9 @@ void main() {
   group('alert', () {
     test('version', () {
       expect(
-        ((jQuery!.fn('alert') as JsObject)['Constructor']
-            as JsObject)['VERSION'],
+        ((jQuery!.fn('alert') as JSObject)['Constructor']
+                as JSObject)['VERSION']
+            .dartify(),
         bootstrapVersionDefault.toString(),
       );
     });
