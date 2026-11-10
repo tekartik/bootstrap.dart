@@ -26,7 +26,7 @@ widget or component library: the Bootstrap markup stays plain HTML.
     tekartik_bootstrap:
       git:
         url: https://github.com/tekartik/bootstrap.dart
-      version: '>=0.3.0'
+      version: '>=0.4.0'
   ```
   It pulls `tekartik_jquery`, `tekartik_bootstrap_asset`,
   `tekartik_browser_utils`, `tekartik_common_utils` and `pub_semver`. Declare
@@ -62,6 +62,12 @@ widget or component library: the Bootstrap markup stays plain HTML.
   older than `jQueryVersionMin`. Call `loadJQuery()` or `loadCdnJQuery()` from
   `package:tekartik_jquery/jquery_loader.dart` before them. The css loaders
   have no such requirement and can run in parallel with jQuery.
+* `loadBootstrapJs` / `loadCdnBootstrapJs` do nothing when Bootstrap's
+  javascript is already in the page (`Alert.version` not null, any version),
+  and concurrent calls share one script tag (a failed load is retried by the
+  next call). An older git ref ran bootstrap.js at each call: its data-api
+  handlers were bound twice and a `data-toggle="dropdown"` click opened then
+  closed the menu at once. The css loaders still add a `<link>` per call.
 * Only a version that exists in the packaged asset or on the CDN works. The
   `tekartik_bootstrap_asset` package ships `3.2.0`, `3.3.5` and `3.3.7`; a
   version passed as `version:` is interpolated straight into the url, so a typo
@@ -81,6 +87,8 @@ widget or component library: the Bootstrap markup stays plain HTML.
   entry point is `tool/run_ci.dart` (`packageRunCi('.')` from
   `package:dev_build/package.dart`). The pure-VM `compat_test.dart` only checks
   `kDartIsWeb`.
+* Use `package:web` (`web.document.body`) with `jElement`: tekartik_jquery
+  0.4.0 takes `web.Element`, a `dart:html` element does not compile there.
 * Anti-patterns: calling a `load*Js` helper before jQuery; expecting Bootstrap 4
   or 5 APIs (this is Bootstrap 3 only, jQuery plugins and the `-default` button
   style); calling `loadBootstrapJs()` without depending on
@@ -94,17 +102,14 @@ widget or component library: the Bootstrap markup stays plain HTML.
 `loadBootstrap()` picks the CDN in release and the packaged assets in debug.
 
 ```dart
-// ignore_for_file: deprecated_member_use
-
-import 'dart:html';
-
 import 'package:tekartik_bootstrap/bootstrap_loader.dart';
 import 'package:tekartik_jquery/jquery.dart';
+import 'package:web/web.dart' as web;
 
 Future<void> main() async {
   await loadBootstrap();
   // The html keeps `body { display: none; }` until the css is in.
-  jElement(document.body!)!.fadeIn();
+  jElement(web.document.body!)!.fadeIn();
 }
 ```
 
@@ -151,16 +156,17 @@ Future<void> loadBootstrapLocal() async {
 ### Build Bootstrap markup with the exposed class names
 
 ```dart
-// ignore_for_file: deprecated_member_use
-
-import 'dart:html';
-
 import 'package:tekartik_bootstrap/bootstrap_class.dart';
+import 'package:web/web.dart' as web;
 
-ButtonElement createDefaultButton(String text, void Function() onPressed) {
-  var button = ButtonElement()
-    ..classes.addAll([btn, btnDefault])
-    ..text = text;
+web.HTMLButtonElement createDefaultButton(
+  String text,
+  void Function() onPressed,
+) {
+  var button = web.HTMLButtonElement()
+    ..classList.add(btn)
+    ..classList.add(btnDefault)
+    ..textContent = text;
   button.onClick.listen((_) => onPressed());
   return button;
 }

@@ -1,3 +1,4 @@
+/// Bootstrap versions and the [Alert] plugin.
 library;
 
 import 'dart:js_interop';
@@ -5,8 +6,10 @@ import 'dart:js_interop_unsafe';
 
 import 'package:pub_semver/pub_semver.dart';
 
+/// The oldest Bootstrap supported.
 Version get bootstrapVersionMin => Version(3, 3, 5);
 
+/// The Bootstrap loaded by default.
 Version get bootstrapVersionDefault => Version(3, 3, 7);
 
 /// The [name] property of [object] when it is a javascript object.
